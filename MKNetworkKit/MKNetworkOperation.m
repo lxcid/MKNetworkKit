@@ -256,7 +256,9 @@
     if(![self isCacheable]) return;
     if(!([self.response statusCode] >= 200 && [self.response statusCode] < 300)) return;
     
-    self.cacheHandlingBlock(self);
+    if (self.cacheHandlingBlock) {
+        self.cacheHandlingBlock(self);
+    }
 }
 
 -(MKNetworkOperationState) state {
